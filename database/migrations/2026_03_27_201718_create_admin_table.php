@@ -9,15 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
-{
-    Schema::create('admin', function (Blueprint $table) {
-        $table->id('id_admin');
-        $table->string('usuario', 255);
-        $table->string('contrasena', 255);
-        $table->timestamps();
-    });
-}
+    public function up(): void
+    {
+        Schema::create('admin', function (Blueprint $table) {
+            $table->id('id_admin');
+            $table->string('usuario', 255)->unique();
+            $table->string('contrasena', 255);
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.

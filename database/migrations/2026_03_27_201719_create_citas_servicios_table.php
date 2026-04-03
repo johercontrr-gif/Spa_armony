@@ -9,22 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
-{
-    Schema::create('citas_servicios', function (Blueprint $table) {
-        $table->id();
+    public function up(): void
+    {
+        Schema::create('citas_servicios', function (Blueprint $table) {
+            $table->id();
 
-        $table->unsignedBigInteger('id_servicio');
-        $table->unsignedBigInteger('id_cita');
+            $table->unsignedBigInteger('id_servicio');
+            $table->unsignedBigInteger('id_cita');
 
-        $table->integer('duracion');
+            $table->integer('duracion')->nullable();
 
-        $table->timestamps();
+            $table->timestamps();
 
-        $table->foreign('id_servicio')->references('id_servicio')->on('servicios')->onDelete('cascade');
-        $table->foreign('id_cita')->references('id_cita')->on('citas')->onDelete('cascade');
-    });
-}
+            $table->foreign('id_servicio')->references('id_servicio')->on('servicios')->onDelete('cascade');
+            $table->foreign('id_cita')->references('id_cita')->on('citas')->onDelete('cascade');
+        });
+    }
 
     /**
      * Reverse the migrations.

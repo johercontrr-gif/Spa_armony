@@ -9,16 +9,16 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
-{
-    Schema::create('servicios', function (Blueprint $table) {
-        $table->unsignedBigInteger('id_servicio')->primary();
-        $table->string('nombre_servicio', 255);
-        $table->integer('precio');
-        $table->string('descripcion', 255);
-        $table->timestamps();
-    });
-}
+    public function up(): void
+    {
+        Schema::create('servicios', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_servicio')->primary();
+            $table->string('nombre_servicio', 255);
+            $table->integer('precio');
+            $table->string('descripcion', 255)->nullable();
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.
